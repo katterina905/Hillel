@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>QUnit Example</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+<script>
+
+var newFullArr = [];
+
+ function multiplication(item) {
+         return newFullArr.push(item * 2);
+ }
+
+function map(arr, callback) {
+    arr.forEach(callback);
+    return newFullArr;
+}
+
+function every(arr) {
+    let result = true;
+    arr.forEach(function (item) {
+                   if(item < 0){
+                       return result = false;
+                }}
+        );
+    return result;
+}
+
+function quest(arr) {
+    let result = false;
+    arr.forEach(
+            function (item) {
+                if(item > 0){
+                    return result = true;
+                }
+            }
+    );
+    return result;
+}
+function some(arr, callback) {
+    let result = callback(arr);
+    return result;
+}
+
+function filterArr(arr) {
+    let result = [];
+    arr.forEach(
+            function (item) {
+                if(item > 0){
+                    return result.push(item);
+                }
+            }
+    );
+    return result;
+}
+function filter(arr, callback) {
+    let result = callback(arr);
+    return result;
+}
+
+function accum(arr, i) {
+    let index = i,
+        spacing = 0,
+        newAccum = arr.filter( function (number, i) {
+        return [i] >= [index]
+        }
+    );
+
+    newAccum.forEach(
+            function (item) {
+                let allSpacing = spacing + item;
+                return spacing = allSpacing;
+                }
+
+    );
+    return spacing;
+}
+function reduce(arr, callback, i) {
+    let result = callback(arr, i);
+    return result;
+}
+
+var sameObj = {
+  first:{
+      sameProp:{
+          test: true
+      }
+  }
+};
+
+function getComputed(obj, someString) {
+    let currentObject = obj;
+    someString.split('.').forEach(function(value)
+        {
+        if(currentObject[value]){
+            currentObject = currentObject[value];
+        }else {
+            currentObject = 'undefined';
+        }});
+    return currentObject;
+}
+
+function setComputed(obj, someString, value) {
+    let currentObject = obj,
+        valueObj = value,
+        someSt = someString.split('.'),
+        res;
+
+    someSt.forEach(function(value) {
+       currentObject[value] = valueObj;
+
+    });
+      res = currentObject[someString];
+    return res;
+}
+
+function makeNum(n, f) {
+    if (f == null) {
+        return n;
+    }
+    else {
+        return f(n);
+    }
+}
+function zero(f) {
+    return makeNum(0, f);
+}
+function one(f) {
+    return makeNum(1, f);
+}
+function two(f) {
+    return makeNum(2, f);
+}
+function three(f) {
+    return makeNum(3, f);
+}
+function four(f) {
+    return makeNum(4, f);
+}
+function five(f) {
+    return makeNum(5, f);
+}
+function six(f) {
+    return makeNum(6, f);
+}
+function seven(f) {
+    return makeNum(7, f);
+}
+function eight(f) {
+    return makeNum(8, f);
+}
+function nine(f) {
+    return makeNum(9, f);
+}
+function ten(f) {
+    return makeNum(10, f);
+}
+
+function multiply(v) {
+    return function(u) {
+        return v * u;
+    };
+}
+function plus(v) {
+    return function(u) {
+        return v + u;
+    };
+}
+function minus(v) {
+    return function(u) {
+        return u - v;
+    };
+}
+function divide(v) {
+    return function(u) {
+        return u / v;
+    };
+}
+
+</script>
+<script src="test.js"></script>
+</body>
+</html>
