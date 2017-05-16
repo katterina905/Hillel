@@ -34,33 +34,22 @@ var arr = [
     }
 ];
 
-arr.forEach(
-    function (item, i) {
-        if(typeof item.tags[2] === 'undefined') {
-            item.tags[2] = 'No information';
-        }
-        
-        document.body.innerHTML += '<ul class="list">'+
-            '<li>'+
-            '<a class="link" style="font-size: 20px;"' + 'href =' + item.url+ '>'+
-            '"' + item.description +  '"'+
-        '</a>'+
-        '<ul class="tags-list tags">'+
-            '<li style="display: inline-block;"> '+ item.tags[0] + '</li>'+ ' '+
-            '<li style="display: inline-block;">' + item.tags[1] + '</li>'+ ' '+
-            '<li style="display: inline-block;">' + item.tags[2] + '</li>'+
-            '</ul>'+
-            '</li>';
-    }
-);
+function genarate( arr ) {
 
-function getUniqueElements(value, index, self) {
-    return self.indexOf(value) === index;
+    arr.forEach(
+        function (item) {
+
+            var li = document.createElement('li');
+            var link = document.createElement('a', item.url);
+            var text = document.createTextNode(item.description);
+            var ul = document.createElement('ul');
+
+            var t = document.createElement('li');
+            var j = t.appendChild(text);
+            document.body.appendChild(j);
+        }
+
+    );
 }
 
-var d  = document.getElementsByTagName('*');
-//var t = d.toJSON();
-
-//console.log( arr.filter(getUniqueElements));
-
-console.log(d);
+genarate(arr);
